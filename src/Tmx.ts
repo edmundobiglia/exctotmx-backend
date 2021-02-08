@@ -10,8 +10,7 @@ class Tmx {
   }
 
   createHeader() {
-    const header = `
-    <?xml version="1.0"?>
+    const header = `<?xml version="1.0"?>
     <tmx version="1.4">
     <header creationtool="Apertium TMX Builder"
         creationtoolversion="3.6.3"
