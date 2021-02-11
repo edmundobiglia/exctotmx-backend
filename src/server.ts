@@ -7,14 +7,12 @@ import express from "express";
 import cors from "cors";
 import multer from "multer";
 import path from "path";
-import fs from "fs";
 import ExcelJS from "exceljs";
 
 import uploadConfig from "./config/upload";
+import Tmx from "./Tmx";
 
 const upload = multer(uploadConfig);
-
-import Tmx from "./Tmx";
 
 const app = express();
 
@@ -23,9 +21,24 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/upload", upload.single("file"), async (request, response) => {
+  const {
+    source_language: sourceLanguage,
+    target_language: targetLanguage,
+  } = request.body;
+
+  if (!sourceLanguage || !targetLanguage) {
+    return response.status(400).json({
+      error: "Source or target language was not specified.",
+    });
+  }
+
   const { filename } = request.file;
 
-  console.log("received_file", filename);
+  if (!request.file) {
+    return response.status(400).json({
+      error: "No file was received by the server",
+    });
+  }
 
   const workbook = new ExcelJS.Workbook();
 
@@ -35,7 +48,7 @@ app.post("/upload", upload.single("file"), async (request, response) => {
 
   var worksheet = workbook.getWorksheet(1);
 
-  let rows: string[][] = [];
+  let segmentList: string[][] = [];
 
   worksheet.eachRow({ includeEmpty: false }, (row) => {
     const [, source, translation]: any = row.values;
@@ -49,24 +62,25 @@ app.post("/upload", upload.single("file"), async (request, response) => {
       typeof translation === "string";
 
     if (segmentIsValid) {
-      rows.push(segment);
+      segmentList.push(segment);
     }
   });
 
-  // VALIDATE THAT FILE IS NOT EMPTY
+  if (segmentList.length === 0) {
+    return response.status(400).json({
+      error: "The uploaded file was empty.",
+    });
+  }
 
-  const newTmx = new Tmx("en-US", "pt-BR", rows);
+  const newTmx = new Tmx(sourceLanguage, targetLanguage, segmentList);
 
-  const tmxData = newTmx.assembleTwx();
-
-  fs.appendFile(uploadConfig.directory + "/mynewfile1.twx", tmxData, (err) => {
-    if (err) throw err;
-    console.log("Saved!");
-  });
+  const tmxData = newTmx.assembleTmx();
 
   // APAGAR ARQUIVO
 
-  return response.download(uploadConfig.directory + "/mynewfile1.twx");
+  return response.json({
+    tmxData,
+  });
 });
 
 app.listen(3333, () => {

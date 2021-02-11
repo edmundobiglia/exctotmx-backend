@@ -12,8 +12,8 @@ class Tmx {
   createHeader() {
     const header = `<?xml version="1.0"?>
     <tmx version="1.4">
-    <header creationtool="Apertium TMX Builder"
-        creationtoolversion="3.6.3"
+    <header creationtool="ToTMX"
+        creationtoolversion="1.0"
         segtype="sentence"
         srclang="${this.sourceLanguage}"
         adminlang="${this.targetLanguage}"
@@ -51,15 +51,15 @@ class Tmx {
     return strigifiedSegments;
   };
 
-  assembleTwx = () => {
+  assembleTmx = () => {
     const header = this.createHeader();
     const footer = this.createFooter();
     const segments = this.createSegments();
     const stringifiedSegments = this.stringifySegments(segments);
 
-    const fullTwx = `${header}${stringifiedSegments}${footer}`;
+    const fullTmx = `${header}${stringifiedSegments}${footer}`;
 
-    return fullTwx;
+    return fullTmx;
   };
 }
 
