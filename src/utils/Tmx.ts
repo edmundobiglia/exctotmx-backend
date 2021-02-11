@@ -1,11 +1,15 @@
 class Tmx {
   sourceLanguage: string;
+
   targetLanguage: string;
+
   segments: string[][];
 
   constructor(sourceLanguage: string, targetLanguage: string, segments: string[][]) {
     this.sourceLanguage = sourceLanguage;
+
     this.targetLanguage = targetLanguage;
+
     this.segments = segments;
   }
 
@@ -53,8 +57,11 @@ class Tmx {
 
   assembleTmx = () => {
     const header = this.createHeader();
+
     const footer = this.createFooter();
+
     const segments = this.createSegments();
+
     const stringifiedSegments = this.stringifySegments(segments);
 
     const fullTmx = `${header}${stringifiedSegments}${footer}`;
