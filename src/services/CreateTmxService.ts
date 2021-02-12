@@ -47,8 +47,6 @@ class CreateTmxService {
 
       if (segmentIsValid) {
         segmentList.push(segment);
-      } else {
-        throw new Error("Invalid data. Data must be strings in columns A and B.");
       }
     });
 
