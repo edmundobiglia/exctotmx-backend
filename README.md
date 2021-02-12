@@ -1,6 +1,6 @@
 <h1 align="center">EXCtoTMX</h1>
 
-<p align="center"><img src="./src/assets/demo.gif" width="550"></p>
+<p align="center"><img src="./readme/demo.gif" width="550"></p>
 
 This is the **backend** part for simple project **EXCtoTMX** developed in **TypeScript** and **React.js**. This minimal app converts a bilingual **.xlsx** file into a **TMX** file to be imported into translation software (CAT tools).
 
