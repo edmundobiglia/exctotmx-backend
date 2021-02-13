@@ -21,3 +21,5 @@ The frontend also does some validation, **showing an error** if:
 - Source and target languages are the same (they must be different)
 
 ## Backend Dependencies
+
+The backend was built in Node.js, with Express.
