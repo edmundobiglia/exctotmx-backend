@@ -12,7 +12,7 @@ Having worked as a translator for many years, I often found myself in a situatio
 
 ## How it works
 
-The TMX file is an XML file that follows a common structure, so this app basically allows you upload a bilingual .xlsx file (containing source text in column A and corresponding translations in column B).
+The TMX file is an XML file that follows a common structure, so this app basically allows you upload a bilingual .xlsx file (source text in column A and translations in column B).
 
 The backend uses **Express**, **Multer** to handle the uploaded file, then uses the library **Excel.JS** to read the uploaded .xlsx file and map it into an array of `[source, translation]` tuples, which is in turn mapped into the proper XML translation units. The app then combines all translations units into one single big string containing the TMX dataa, which is sent which sent to the frontend for download.
 
