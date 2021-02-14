@@ -14,7 +14,7 @@ Having worked as a translator for many years, I often found myself in a situatio
 
 The TMX file is an XML file that follows a common structure, so this app basically allows you upload a bilingual .xlsx file (source text in column A and translations in column B), which is read and processed to generate the proper XML data.
 
-The backend uses **Express**, **Multer** to handle the uploaded file, then uses the library **Excel.JS** to read the uploaded .xlsx file and map it to an array of `[source, translation]` tuples, which is in turn mapped to the proper XML translation units. The app then combines all translations units into one single big string containing the TMX dataa, which is sent which sent to the frontend for download.
+The backend uses **Express**, **Multer** to handle the uploaded file, then uses the library **Excel.JS** to read the uploaded .xlsx file and map it to an array of `[source, translation]` tuples, which is in turn mapped to the proper XML translation units. The app then combines all translations units into one single big string containing the TMX data, which is sent which sent to the frontend for download.
 
 ## Dependencies
 
