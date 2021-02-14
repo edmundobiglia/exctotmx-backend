@@ -16,6 +16,8 @@ The TMX file is an XML file that follows a common structure, so this app basical
 
 The backend uses **Express**, **Multer** to handle the uploaded file, then uses the library **Excel.JS** to read the uploaded .xlsx file and map it to an array of `[source, translation]` tuples, which is in turn mapped to the proper XML translation units. The app then combines all translations units into one single big string containing the TMX data, which is sent to the frontend for download.
 
+The bakend does some validation, returning an error as a response if some of the needed information is not included in the request or if the file is empty.
+
 ## Dependencies
 
 The packages used for the backend were **Express**, **Multer**, **CORS**, **Excel.JS** and **XML Formatter**.
