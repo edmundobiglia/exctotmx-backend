@@ -2,9 +2,9 @@
 
 <p align="center"><img src="./readme/demo.gif" width="550"></p>
 
-This is the **backend** part for simple project **EXCtoTMX** developed with **TypeScript** and **Node.js** (repo for the frontend part <a href="https://github.com/edmundobiglia/exctotmx-frontend">here</a>). This minimal app converts a bilingual **.xlsx** file into a **TMX** file to be imported into translation software (CAT tools).
+This is the **backend** part for the simple project **EXCtoTMX** developed with **TypeScript** and **Node.js** (repo for the frontend part <a href="https://github.com/edmundobiglia/exctotmx-frontend">here</a>). This minimal app converts a bilingual **.xlsx** file into a **TMX** file to be imported into translation software (CAT tools).
 
-**TMX** is a type of XML file that contains translation units (source text and corresponding translations) and can be imported into **translation memories** from CAT (computer-assisted translation) software. A translation memory is a database of translations which is populated as translators translate source files.
+**TMX** is a type of XML file that contains translation units (source text and corresponding translations) that can be imported into **translation memories** (TMs) from translation software. A TM is a database of translations which is populated as translators translate source files.
 
 ## Motivation
 
